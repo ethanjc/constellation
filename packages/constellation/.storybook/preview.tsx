@@ -9,13 +9,11 @@ const parameters = {
 }
 
 const decorators = [
-  (Story) => {
+  Story => {
     const themeMode: ThemeMode = useDarkMode() ? 'dark' : 'light'
 
-    const theme = useThemeMode(themeMode)
-
     return (
-      <ThemeProvider theme={theme}>
+      <ThemeProvider theme={themeMode}>
         <Story />
       </ThemeProvider>
     )

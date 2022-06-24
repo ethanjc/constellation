@@ -1,0 +1,23 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+    :root {
+        --color-primary: #0C6CF2;
+        --color-medium: #DFE3EB;
+        --color-background: #FFFFFF;
+        --color-background-light: #F0F2F7;
+        --color-shadow-control: 0px 3px 8px rgba(0, 0, 0, 0.15);
+        --color-shadow-control-sm: 0px 3px 1px rgba(0, 0, 0, 0.06);
+        --color-dark-500: #4D515B
+    }
+    .theme-dark {
+        --color-primary: #65A5FF;
+        --color-medium: #3B3E46;
+        --color-background: #07080D;
+        --color-background-light: #20242C;
+        --color-shadow-control: 0px 3px 8px rgba(0, 0, 0, 0.12);
+        --color-shadow-control-sm: 0px 3px 1px rgba(0, 0, 0, 0.12);
+    }
+}
