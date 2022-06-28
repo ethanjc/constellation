@@ -1,15 +1,16 @@
 import * as SliderPrimitive from '@radix-ui/react-slider'
-import classnames from 'classnames'
 import React from 'react'
 
 import { SliderComponent } from './Slider.types'
 
-const Slider: SliderComponent = ({ color = 'primary', size = 'default', ...props }) => {
+const Slider: SliderComponent = ({ max, min, step = 1, value, ...props }) => {
   return (
     <SliderPrimitive.Root
-      defaultValue={[50]}
-      max={100}
-      step={1}
+      value={value}
+      step={step}
+      min={min}
+      max={max}
+      {...props}
       aria-label='value'
       className='relative flex h-5 w-64 touch-none items-center'
     >

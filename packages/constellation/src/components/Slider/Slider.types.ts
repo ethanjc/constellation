@@ -1,11 +1,11 @@
 import { SliderProps as RadixSliderProps } from '@radix-ui/react-slider'
 import { FC } from 'react'
 
-import { SwitchTheme } from './theme'
-
 type SliderProps = RadixSliderProps & {
-  color?: keyof SwitchTheme['colors']
-  size?: keyof SwitchTheme['sizes']
+  max: number
+  min: number
+  step: number
+  value: number
 }
 
 type SliderComponent = FC<SliderProps>

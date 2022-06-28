@@ -5,18 +5,9 @@ import { Slider, SliderComponent } from '.'
 
 export default {
   argTypes: {
-    checked: {
-      control: { type: 'boolean' },
-      description: 'Boolean indicating if the switch is activated/checked or not.',
-    },
-    color: {
-      control: { type: 'select' },
-      defaultValue: 'primary',
-      description: 'The rendering color of the switch.',
-      options: ['primary', 'secondary'],
-    },
-    disabled: {
-      description: 'Its a slider',
+    value: {
+      control: { type: 'number' },
+      description: 'Number indicating the value of the slider',
     },
   },
   component: Slider,
