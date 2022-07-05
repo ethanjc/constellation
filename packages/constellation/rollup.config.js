@@ -8,7 +8,15 @@ import typescript from '@rollup/plugin-typescript'
 import dts from 'rollup-plugin-dts'
 import peerDepsExternal from 'rollup-plugin-peer-deps-external'
 import { terser } from 'rollup-plugin-terser'
-import { visualizer } from "rollup-plugin-visualizer";
+import { visualizer } from 'rollup-plugin-visualizer'
+import postcss from 'rollup-plugin-postcss'
+import autoprefixer from 'autoprefixer'
+import tailwindcss from 'tailwindcss'
+import cssnano from 'cssnano'
+
+import simplevars from 'postcss-simple-vars'
+import nested from 'postcss-nested'
+import cssnext from 'postcss-cssnext'
 
 const packageJson = require('./package.json')
 
@@ -18,9 +26,13 @@ export default (args) => {
 
   delete args.analyze_bundle
   delete args.analyze_bundle_json
-  
+
   const plugins = [
     peerDepsExternal(),
+    postcss({
+      plugins: [simplevars(), nested(), cssnext({ warnForDuplicated: false })],
+      extensions: ['.css'],
+    }),
     resolve(),
     commonjs(),
     typescript({ tsconfig: './tsconfig.json' }),
@@ -32,8 +44,8 @@ export default (args) => {
     plugins.push(
       visualizer({
         sourcemap: true,
-        open: true
-      })
+        open: true,
+      }),
     )
   }
 
@@ -41,8 +53,8 @@ export default (args) => {
     plugins.push(
       visualizer({
         sourcemap: true,
-        json: true
-      })
+        json: true,
+      }),
     )
   }
   return [
@@ -66,7 +78,13 @@ export default (args) => {
     {
       input: 'dist/esm/types/index.d.ts',
       output: [{ file: 'dist/index.d.ts', format: 'esm' }],
-      plugins: [dts()],
+      plugins: [
+        postcss({
+          plugins: [simplevars(), nested(), cssnext({ warnForDuplicated: false })],
+          extensions: ['.css'],
+        }),
+        dts(),
+      ],
     },
   ]
 }

@@ -15,7 +15,7 @@ export default {
 } as ComponentMeta<SliderComponent>
 
 const Template: ComponentStory<SliderComponent> = ({ value: defaultValue = 0, ...args }) => {
-  return <Slider />
+  return <Slider min={0} max={100} step={1} />
 }
 
 export const Primary = Template.bind({})

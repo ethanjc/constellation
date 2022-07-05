@@ -1,7 +1,7 @@
 import { FC } from 'react'
 import { Theme } from 'theme/theme.types'
 
-type ThemeProviderProps = { theme: Theme }
+type ThemeProviderProps = { theme: String | Theme }
 
 type ThemeProviderComponent = FC<ThemeProviderProps>
 
